@@ -1,0 +1,364 @@
+@import "fonts"
+@import "libs"
+@import "base"
+@import "vars"
+
+// Пользовательские стили
+
+
+.header
+  margin: 0 0 30px 40px
+  padding-top: 30px
+
+.main
+  margin: 30px 0 30px 40px
+
+.header, .main, .footer
+  transition: filter .5s ease
+
+.logo
+  width: 108px
+  height: 27px
+  margin: 0 40px 0 0
+  position: relative
+  top: 7px
+
+.device-block
+  position: relative
+  width: 200px
+  height: 120px
+  padding: 15px
+  background-color: #f7f7f7
+  border-radius: 20px
+  transition: .5s ease
+  .device-text
+    position: absolute
+    bottom: 15px
+    margin-right: 15px
+  .device-img
+    width: 24px
+    height: 24px
+  .device-name
+    vertical-align: bottom
+    font-size: 14px
+    letter-spacing: 0
+  .start-time
+    letter-spacing: 0
+    font-size: 12px
+    color: #858585
+    font-family: Arial-MT-my, sans-serif
+  &:hover
+    background: #FFFFFF
+    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50)
+
+.header__nav_hamburger
+  display: none
+
+.header__nav
+  display: inline-block
+
+.header__nav_item
+  color: #333333
+  opacity: .6
+  text-decoration: none
+  margin: 0 20px
+  transition: .5s ease
+  &.selected
+    opacity: 1
+  &:hover
+    opacity: 1
+
+.line
+  content: ''
+  height: 1px
+  width: 100%
+  background-color: #f0f0f0
+  margin: 35px 0 20px 0
+
+.main
+  overflow: hidden
+  display: grid
+  grid-column-gap: 25px
+  grid-template-columns: repeat(2, minmax(450px, 1fr))
+  grid-template-areas: "main_left main_right" "main_bottom main_bottom"
+  //grid-template-rows: minmax(1px, 450px)
+
+.main__left-block
+  grid-area: main_left
+
+.main__right-block
+  grid-area: main_right
+
+.main__bottom-block
+  grid-area: main_bottom
+
+.main__right-block_heading, .main__left-block_heading
+  font-size: 18px
+
+.main__left-block__content
+  background-image: url(../img/main/left-block/bg@2x.png)
+  background-size: cover
+  background-repeat: no-repeat
+  border-radius: 23px
+  padding: 20px 30px 0 20px
+  display: grid
+  grid-template-columns: 2fr 1fr
+  .greeting
+    line-height: 1.2em
+    display: inline-block
+    margin-top: 10px
+    font-size: 27px
+  .status_text
+    font-size: 14px
+    font-family: Arial-MT-my, sans-serif
+  .in-house
+    margin-right: 20px
+  .in-house, .out-house
+    margin-top: 25px
+    display: inline-block
+    .temp
+      display: inline-block
+      margin-top: 10px
+      font-size: 36px
+    .text
+      font-size: 14px
+      color: #858585
+    .weather_img
+      width: 27px
+      height: 27px
+
+.main__left-block__content__right-block
+  position: relative
+
+
+::-webkit-scrollbar
+  display: none
+
+.main__left-block__content__right-block
+  .device-block_wrapper
+    height: 270px
+    overflow-y: scroll
+    display: grid
+    grid-template: 1fr 1fr / 1fr
+    grid-gap: 15px
+    padding-bottom: 15px
+
+.main__left-block__content__right-block
+  .next
+    background-color: #f7f7f7
+    height: 40px
+    width: 200px
+    text-align: center
+    line-height: 40px
+    cursor: pointer
+    border-radius: 20px 20px 0 0
+    transition: height .5s ease
+    overflow: hidden
+    img
+      width: 16px
+      height: 16px
+      
+.main__right-block
+  position: relative
+  overflow-y: hidden
+
+.main__right-block__content
+  overflow: scroll
+  .device-block_wrapper
+    padding-bottom: 5px
+    transition: 1s ease
+    display: grid
+    grid-template-columns: repeat(auto-fill, 200px)
+    grid-template-rows: 1fr 1fr 1fr
+    grid-gap: 15px
+    grid-auto-flow: column
+    .device-block
+      height: 100px
+
+
+.main__right-block_controls
+  position: absolute
+  right: 60px
+  top: 20px
+  .next, .prev
+    cursor: pointer
+    display: inline-block
+    width: 8px
+    height: 15px
+    &.disabled
+      cursor: not-allowed
+      opacity: .5
+    img
+      width: 100%
+      height: 100%
+  .next
+    margin-left: 10px
+    img
+      transform: rotate(180deg)
+
+.main__bottom-block
+  position: relative
+  margin-top: 15px
+
+.main__right-block_heading
+  display: inline-block
+
+.main__bottom-block__nav
+  display: inline-block
+  .main__bottom-block__nav_item
+    font-size: 13px
+    display: inline-block
+    background-color: #f7f7f7
+    border-radius: 20px
+    padding: 0 15px
+    line-height: 2
+    transition: .5s ease
+    cursor: pointer
+    &:hover, &.selected
+      background-color: #ffd93e
+    .arrow-down
+      display: none
+
+.main__bottom-block__content
+  overflow: scroll
+  padding-bottom: 5px
+  .device-block_wrapper
+    transition: 1s ease
+    white-space: nowrap
+    .device-block
+      white-space: normal
+      display: none
+      margin-right: 15px
+      &.seen
+        display: inline-block
+
+.body_background
+  background: rgba(51,51,51,0.50)
+  width: 100%
+  content: ''
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
+
+body
+  >.device-block_wrap
+    position: fixed
+    z-index: 11
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    >.button_wrap
+      margin-top: 20px
+      >.device-block_button
+        display: inline-block
+        text-align: center
+        background-color: #ffffff
+        border-radius: 20px
+        line-height: 60px
+        width: 49%
+        transition: .5s ease
+        &:hover
+          background-color: #ffcd00
+        &:first-child
+          margin-right: 2%
+    >.device-block
+      background-color: #ffffff
+      line-height: 1.7
+      padding: 25px
+      width: 630px
+      height: 343px
+      .device-text
+        position: static
+        float: left
+        .device-name
+          font-size: 27px
+        .start-time
+          font-size: 14px
+      .content_wrap
+        text-align: center
+        width: 221px
+        height: 221px
+        background: url('../img/Oval.png')
+        position: absolute
+        bottom: 24px
+        left: 50%
+        transform: translate(-50%,0)
+        >.temperature_value
+          width: 178px
+          height: 178px
+          margin-top: 22px
+          background-color: #fefefe
+          box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45)
+          font-size: 66px
+          color: #333333
+          letter-spacing: 0
+          display: inline-block
+          line-height: 178px
+          border-radius: 50%
+          >.triangle_wrap
+            position: absolute
+            display: block
+            width: 178px
+            height: 10px
+            left: 22px
+            bottom: 105px
+            transform: rotate(200deg)
+            >.triangle
+              content: ''
+              left: -5px
+              transform: rotate(90deg)
+              width: 10px
+              height: 10px
+              display: block
+              position: absolute
+              border: 5px solid transparent
+              border-top: 5px solid #333333
+
+    .right-temp_block
+      display: none
+
+.main__bottom-block_controls
+  position: absolute
+  right: 60px
+  top: 30px
+  .next, .prev
+    cursor: pointer
+    display: inline-block
+    width: 8px
+    height: 15px
+    &.disabled
+      opacity: .5
+      cursor: not-allowed
+    img
+      width: 100%
+      height: 100%
+  .next
+    margin-left: 10px
+    img
+      transform: rotate(180deg)
+
+.footer
+  margin-left: 40px
+  margin-right: 40px
+  font-size: 12px
+  font-family: Arial-MT-my, sans-serif
+  letter-spacing: .01px
+  color: #858585
+  .yandex_info
+    float: right
+
+.footer__content
+  display: inline-block
+  padding-left: 0
+  margin-top: 0
+  .footer__content_elem
+    display: inline-block
+    padding-right: 20px
+    a
+      text-decoration: none
+      color: #858585
+      transition: .5s ease
+      &:hover
+        color: #000000
+@import "media" // Всегда в конце
